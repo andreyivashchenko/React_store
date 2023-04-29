@@ -1,0 +1,72 @@
+.header__row {
+  display: flex;
+  height: 140px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+}
+.header__logo {
+  background: url("../../assets/samsung-icon.svg") 0 50%/50px 50px no-repeat;
+  padding-left: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex: 0 1 auto;
+}
+.header__logo .title {
+  color: rgb(24, 24, 24);
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 29px;
+}
+.header__logo .subtitle {
+  text-transform: lowercase;
+  color: rgb(123, 123, 123);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+}
+.header__basket {
+  align-self: center;
+}
+.header__basket .basket {
+  background-color: #437ec7;
+  display: flex;
+  border-radius: 30px;
+}
+.header__basket .basket__item {
+  padding: 15px 0;
+  color: white;
+  position: relative;
+  font-size: 16px;
+  font-weight: 700;
+  align-self: center;
+}
+.header__basket .basket__item:first-child {
+  margin: 0 13px 0 23px;
+}
+.header__basket .basket__item:first-child:after {
+  content: " ";
+  width: 12px;
+  height: 12px;
+  background: url("../../assets/ruble.svg") 0 50%/12px 12px no-repeat;
+  display: inline-block;
+  margin-left: 3px;
+}
+.header__basket .basket__item:last-child {
+  margin: 0 23px 0 13px;
+  cursor: pointer;
+}
+.header__basket .basket__item:last-child:before {
+  content: " ";
+  width: 13px;
+  height: 13px;
+  background: url("../../assets/basket.svg") 0 50%/13px 13px no-repeat;
+  display: inline-block;
+  margin-right: 4px;
+}
+.header__basket .basket__item:nth-child(2) {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/*# sourceMappingURL=Header.module.css.map */

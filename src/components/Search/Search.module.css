@@ -1,0 +1,45 @@
+.container {
+  align-self: center;
+  padding-left: 40px;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.container__input {
+  position: relative;
+  flex: 0 1 350px;
+  min-width: 150px;
+}
+.container__input .input {
+  font-family: inherit;
+  border: 2px solid #437ec7;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px 25px;
+  font-size: 16px;
+}
+.container__input .input:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.container__input .input__searchIcon {
+  position: absolute;
+  max-height: 18px;
+  z-index: 4;
+  top: 13px;
+  left: 6px;
+  opacity: 0.5;
+}
+.container__input .input__closeIcon {
+  max-height: 18px;
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.container__input .input__closeIcon:hover {
+  opacity: 0.8;
+}
+
+/*# sourceMappingURL=Search.module.css.map */
