@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import arrow from "../../assets/SortArrow.svg";
 import styles from "./Sort.module.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,14 +8,25 @@ const Sort = () => {
     (state) => state.filter
   );
   const dispatch = useDispatch();
+  const sortRef = useRef();
 
   const sort_choice = (i) => {
     dispatch(changeSortType(i));
     dispatch(isOpenSort());
   };
 
+  useEffect(() => {
+    const handleClickOutside = (ev) => {
+      if (!ev.composedPath().includes(sortRef.current)) {
+        dispatch(isOpenSort(false));
+      }
+    };
+    document.body.addEventListener("click", handleClickOutside);
+    return () => document.body.removeEventListener("click", handleClickOutside);
+  }, []);
+
   return (
-    <div className={styles.sort}>
+    <div ref={sortRef} className={styles.sort}>
       <img
         src={arrow}
         alt="arrow"

@@ -52,8 +52,10 @@ export const filterSlice = createSlice({
     changeSortType: (state, action) => {
       state.selectedType = action.payload;
     },
-    isOpenSort: (state) => {
-      state.isOpen = !state.isOpen;
+    isOpenSort: (state, action) => {
+      action.payload === undefined
+        ? (state.isOpen = !state.isOpen)
+        : (state.isOpen = action.payload);
     },
     setFilters: (state, action) => {
       state.categoriesId = Number(action.payload.categoriesId);
