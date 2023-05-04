@@ -39,6 +39,7 @@ const initialState = {
   ],
   selectedType: 0,
   isOpen: false,
+  searchFlag: false,
 };
 
 export const filterSlice = createSlice({
@@ -57,6 +58,7 @@ export const filterSlice = createSlice({
     setFilters: (state, action) => {
       state.categoriesId = Number(action.payload.categoriesId);
       state.selectedType = Number(action.payload.selectedType);
+      state.searchFlag = action.payload.searchFlag;
     },
   },
 });
