@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import plus from "../../assets/Vector.svg";
+import plus from "../../assets/plus.svg";
 import minus from "../../assets/minus.svg";
 import styles from "./CardProduct.module.scss";
 const CardProduct = ({ title, price, img, storage, color }) => {

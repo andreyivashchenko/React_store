@@ -4,6 +4,7 @@ import NotFound from "../pages/NotFound/NotFound";
 import Layout from "../pages/Layout/Layout";
 import Home from "../pages/Home/Home";
 import styles from "./App.module.scss";
+import Cart from "../pages/Cart/Cart";
 export const SearchContext = createContext("");
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route index path="/Cart" element={<Cart />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
