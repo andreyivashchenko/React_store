@@ -3,12 +3,7 @@ import plus from "../../assets/plus.svg";
 import minus from "../../assets/minus.svg";
 import styles from "./CardProduct.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addItem,
-  increment,
-  decrement,
-  findItem,
-} from "../../redux/slices/CartSlice";
+import { addItem, decrement, findItem } from "../../redux/slices/CartSlice";
 
 const CardProduct = ({ id, img, title, price, color, storage }) => {
   const [activeStorage, setActiveStorage] = useState(0);

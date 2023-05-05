@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./CartItem.module.scss";
-import photo from "../../assets/products/img/low_quality/s22Black.webp";
 import del from "../../assets/close.svg";
 import { useDispatch } from "react-redux";
 import { decrement, removeItem, addItem } from "../../redux/slices/CartSlice";
