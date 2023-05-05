@@ -3,7 +3,12 @@ import plus from "../../assets/plus.svg";
 import minus from "../../assets/minus.svg";
 import styles from "./CardProduct.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, increment, decrement } from "../../redux/slices/CartSlice";
+import {
+  addItem,
+  increment,
+  decrement,
+  findItem,
+} from "../../redux/slices/CartSlice";
 
 const CardProduct = ({ id, img, title, price, color, storage }) => {
   const [activeStorage, setActiveStorage] = useState(0);
@@ -30,22 +35,20 @@ const CardProduct = ({ id, img, title, price, color, storage }) => {
       })
     );
   };
-  const items = useSelector((state) =>
-    state.cart.items.find(
-      (item) =>
-        item.id === id &&
-        item.color === color[activeColor] &&
-        item.storage === storage[activeStorage]
-    )
-  );
-  console.log(items ? items.count : "");
+  const items = useSelector((state) => {
+    return findItem(state.cart, {
+      id,
+      color: color[activeColor],
+      storage: storage[activeStorage],
+    });
+  });
   return (
     <div className={styles.cards}>
       <div className={styles.cards__item}>
         <img
           className={styles.cards__img}
           src={require(`../../assets/products/img/low_quality/${img}.webp`)}
-          alt="Galaxy"
+          alt={title}
         />
         <h4 className={styles.cards__title}>{title}</h4>
         <div className={styles.cards__selector}>
