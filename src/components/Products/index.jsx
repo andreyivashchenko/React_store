@@ -2,10 +2,43 @@ import React, { useState } from "react";
 import plus from "../../assets/plus.svg";
 import minus from "../../assets/minus.svg";
 import styles from "./CardProduct.module.scss";
-const CardProduct = ({ title, price, img, storage, color }) => {
-  const [count, setCount] = useState(0);
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, increment, decrement } from "../../redux/slices/CartSlice";
+
+const CardProduct = ({ id, img, title, price, color, storage }) => {
   const [activeStorage, setActiveStorage] = useState(0);
   const [activeColor, setActiveColor] = useState(0);
+  const dispatch = useDispatch();
+  const onClickAdd = () => {
+    dispatch(
+      addItem({
+        id,
+        img,
+        title,
+        price,
+        color: color[activeColor],
+        storage: storage[activeStorage],
+      })
+    );
+  };
+  const onClickDecrement = () => {
+    dispatch(
+      decrement({
+        id,
+        color: color[activeColor],
+        storage: storage[activeStorage],
+      })
+    );
+  };
+  const items = useSelector((state) =>
+    state.cart.items.find(
+      (item) =>
+        item.id === id &&
+        item.color === color[activeColor] &&
+        item.storage === storage[activeStorage]
+    )
+  );
+  console.log(items ? items.count : "");
   return (
     <div className={styles.cards}>
       <div className={styles.cards__item}>
@@ -43,17 +76,19 @@ const CardProduct = ({ title, price, img, storage, color }) => {
           <p className={styles.block__price}> от {price} ₽</p>
           <div
             className={`${styles.block__btn} ${styles.btn}`}
-            onClick={() => setCount((prevState) => prevState + 1)}
+            onClick={() => {
+              onClickAdd();
+            }}
           >
             {" "}
             <img className={styles.btn__plus} src={plus} alt="plus" />
-            {count > 0 ? <span>{count}</span> : "Добавить"}
+            {items && items.count ? <span>{items.count}</span> : "Добавить"}
             <span
               onClick={(e) => {
                 e.stopPropagation();
-                setCount((prevState) => prevState - 1);
+                onClickDecrement();
               }}
-              className={`${count > 0 ? `${styles.added}` : ""}`}
+              className={`${items && items.count ? `${styles.added}` : ""}`}
             >
               <img className={styles.btn__minus} src={minus} alt="minus" />
             </span>

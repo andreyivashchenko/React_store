@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styles from "./Cart.module.scss";
 import cartImg from "../../assets/cart.svg";
 import trash from "../../assets/trash.svg";
@@ -15,6 +15,9 @@ const Cart = () => {
         <span className={styles.cleaning__title}>Очистить корзину</span>
       </div>
       <div className={styles.cart__body}>
+        <CartItem />
+        <CartItem />
+        <CartItem />
         <CartItem />
       </div>
       <div className={styles.cart__options}>
